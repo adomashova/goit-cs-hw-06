@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Надіслати повідомлення</title>
+  <link rel="icon" href="/logo.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="/"><img src="/logo.png" alt="Логотип"> Chat App</a>
+      <a class="link" href="/">Головна</a>
+      <a class="link" href="/message.html">Надіслати повідомлення</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h1>Надіслати повідомлення</h1>
+
+      <div id="sent-banner" class="banner" hidden>
+        ✅ Повідомлення надіслано та передано на збереження.
+      </div>
+
+      <form action="/message" method="post">
+        <label for="username">Ім'я користувача</label>
+        <input id="username" type="text" name="username" required maxlength="100">
+
+        <label for="message">Повідомлення</label>
+        <textarea id="message" name="message" required maxlength="2000"></textarea>
+
+        <button class="button" type="submit">Надіслати</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>Фінальне завдання · HTTP :3000 · Socket :5000 · MongoDB</footer>
+
+  <script>
+    // після успішної відправки сервер повертає на /message.html?sent=1
+    if (new URLSearchParams(window.location.search).get("sent") === "1") {
+      document.getElementById("sent-banner").hidden = false;
+    }
+  </script>
+</body>
+</html>
